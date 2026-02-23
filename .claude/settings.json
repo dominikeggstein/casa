@@ -1,0 +1,35 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash && input.command matches 'git push'",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "REMINDER: Run /deploy-check (lint + typecheck + build) before pushing to avoid failed deployments."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit && input.file_path matches '\\.tsx?$'",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "TypeScript file edited. Consider running 'npx tsc --noEmit' to check for type errors."
+          }
+        ]
+      },
+      {
+        "matcher": "Edit && input.file_path matches 'supabase/migrations'",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Supabase migration file edited. Run 'npx supabase db push' or 'npx supabase migration up' to apply changes."
+          }
+        ]
+      }
+    ]
+  }
+}
