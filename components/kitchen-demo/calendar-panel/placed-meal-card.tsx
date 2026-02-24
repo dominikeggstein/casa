@@ -10,8 +10,10 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import type { MenuItem, Person, PlacedMeal } from "../types";
+import { getMealTotalCalories } from "../utils";
 import { PeoplePickerPopoverContent } from "./people-picker-popover";
 import { RecipeDetailDialog } from "./recipe-detail-dialog";
+import Image from "next/image";
 
 interface PlacedMealCardProps {
   meal: PlacedMeal;
@@ -19,6 +21,7 @@ interface PlacedMealCardProps {
   people: Person[];
   onRemove: (id: string) => void;
   onTogglePerson: (mealId: string, personId: string) => void;
+  onUpdateServings: (placedMealId: string, personId: string, servings: number) => void;
   onUpdateMenuItem: (updated: MenuItem) => void;
 }
 
@@ -28,6 +31,7 @@ export function PlacedMealCard({
   people,
   onRemove,
   onTogglePerson,
+  onUpdateServings,
   onUpdateMenuItem,
 }: PlacedMealCardProps) {
   const [peopleOpen, setPeopleOpen] = useState(false);
@@ -69,12 +73,12 @@ export function PlacedMealCard({
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
       >
-        <span className="text-base leading-none">{menuItem.emoji}</span>
+        <Image src={menuItem.image} alt={menuItem.name} width={24} height={24} className="shrink-0 rounded-full object-cover" />
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline gap-1">
             <p className="truncate font-medium">{menuItem.name}</p>
             <span className="ml-auto shrink-0 font-mono text-[10px] tabular-nums text-orange/70">
-              {menuItem.macros.calories}
+              {getMealTotalCalories(meal, menuItem)}
             </span>
           </div>
         <Popover open={peopleOpen} onOpenChange={setPeopleOpen}>
@@ -132,6 +136,10 @@ export function PlacedMealCard({
         open={detailOpen}
         onOpenChange={setDetailOpen}
         menuItem={menuItem}
+        meal={meal}
+        people={people}
+        onTogglePerson={(personId) => onTogglePerson(meal.id, personId)}
+        onUpdateServings={(personId, servings) => onUpdateServings(meal.id, personId, servings)}
         onUpdateMenuItem={onUpdateMenuItem}
       />
     </>

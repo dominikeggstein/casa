@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Clock, Flame, GripVertical } from "lucide-react";
 import type { MenuItem } from "../types";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface MenuItemCardProps {
   item: MenuItem;
@@ -36,7 +37,7 @@ export function MenuItemCard({ item, onSelect, isSelected }: MenuItemCardProps) 
       )}
     >
       <GripVertical className="size-4 shrink-0 text-muted-foreground opacity-40 group-hover:opacity-100 transition-opacity" />
-      <span className="text-2xl leading-none">{item.emoji}</span>
+      <Image src={item.image} alt={item.name} width={40} height={40} className="shrink-0 rounded-md object-cover shadow-sm" />
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-medium">{item.name}</p>
         <div className="mt-0.5 flex items-center gap-3 text-xs text-muted-foreground">

@@ -13,7 +13,7 @@ export interface Macros {
 
 export interface MenuItem {
   id: string;
-  emoji: string;
+  image: string;
   name: string;
   time: number; // minutes
   servings: number;
@@ -37,6 +37,7 @@ export interface PlacedMeal {
   date: string; // YYYY-MM-DD
   mealType: MealType;
   assignedPersonIds: string[];
+  personServings: Record<string, number>; // personId → servings (default 1)
 }
 
 export type CalendarView = "day" | "3day" | "week";
@@ -62,6 +63,7 @@ export type DemoAction =
   | { type: "UPDATE_PERSON"; personId: string; updates: Partial<Pick<Person, "name" | "dailyCalorieTarget" | "color">> }
   | { type: "ASSIGN_PERSON"; placedMealId: string; personId: string }
   | { type: "UNASSIGN_PERSON"; placedMealId: string; personId: string }
+  | { type: "UPDATE_PLACED_MEAL_SERVINGS"; placedMealId: string; personId: string; servings: number }
   | { type: "SET_CALENDAR_VIEW"; view: CalendarView }
   | { type: "NAVIGATE_CALENDAR"; direction: "prev" | "next" | "today" }
   | { type: "TOGGLE_MACROS" }

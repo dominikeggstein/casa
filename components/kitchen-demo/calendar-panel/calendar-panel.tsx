@@ -16,6 +16,7 @@ interface CalendarPanelProps {
   onNavigate: (dir: "prev" | "next" | "today") => void;
   onRemoveMeal: (id: string) => void;
   onTogglePerson: (mealId: string, personId: string) => void;
+  onUpdateServings: (placedMealId: string, personId: string, servings: number) => void;
   onTapPlace?: (date: string, mealType: MealType) => void;
   onPickMeal?: (date: string, mealType: MealType, menuItemId: string) => void;
   onUpdateMenuItem: (updated: MenuItem) => void;
@@ -31,6 +32,7 @@ export function CalendarPanel({
   onNavigate,
   onRemoveMeal,
   onTogglePerson,
+  onUpdateServings,
   onTapPlace,
   onPickMeal,
   onUpdateMenuItem,
@@ -59,6 +61,7 @@ export function CalendarPanel({
               people={people}
               onRemoveMeal={onRemoveMeal}
               onTogglePerson={onTogglePerson}
+              onUpdateServings={onUpdateServings}
               onTapPlace={onTapPlace}
               onPickMeal={onPickMeal}
               onUpdateMenuItem={onUpdateMenuItem}

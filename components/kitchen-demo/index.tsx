@@ -38,7 +38,11 @@ function getInitialState(): DemoState {
 
 function reducer(state: DemoState, action: DemoAction): DemoState {
   switch (action.type) {
-    case "DROP_MEAL":
+    case "DROP_MEAL": {
+      const personServings: Record<string, number> = {};
+      for (const p of state.people) {
+        personServings[p.id] = 1;
+      }
       return {
         ...state,
         placedMeals: [
@@ -49,10 +53,12 @@ function reducer(state: DemoState, action: DemoAction): DemoState {
             date: action.date,
             mealType: action.mealType,
             assignedPersonIds: state.people.map((p) => p.id),
+            personServings,
           },
         ],
         selectedMenuItemId: null,
       };
+    }
     case "REMOVE_MEAL":
       return {
         ...state,
@@ -71,15 +77,21 @@ function reducer(state: DemoState, action: DemoAction): DemoState {
       return { ...state, menuItems: [...state.menuItems, action.item] };
     case "ADD_PERSON":
       return { ...state, people: [...state.people, action.person] };
-    case "REMOVE_PERSON":
+    case "REMOVE_PERSON": {
       return {
         ...state,
         people: state.people.filter((p) => p.id !== action.personId),
-        placedMeals: state.placedMeals.map((m) => ({
-          ...m,
-          assignedPersonIds: m.assignedPersonIds.filter((id) => id !== action.personId),
-        })),
+        placedMeals: state.placedMeals.map((m) => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          const { [action.personId]: _, ...restServings } = m.personServings;
+          return {
+            ...m,
+            assignedPersonIds: m.assignedPersonIds.filter((id) => id !== action.personId),
+            personServings: restServings,
+          };
+        }),
       };
+    }
     case "UPDATE_PERSON":
       return {
         ...state,
@@ -92,23 +104,29 @@ function reducer(state: DemoState, action: DemoAction): DemoState {
         ...state,
         placedMeals: state.placedMeals.map((m) =>
           m.id === action.placedMealId
-            ? { ...m, assignedPersonIds: [...m.assignedPersonIds, action.personId] }
+            ? {
+                ...m,
+                assignedPersonIds: [...m.assignedPersonIds, action.personId],
+                personServings: { ...m.personServings, [action.personId]: 1 },
+              }
             : m
         ),
       };
     case "UNASSIGN_PERSON":
       return {
         ...state,
-        placedMeals: state.placedMeals.map((m) =>
-          m.id === action.placedMealId
-            ? {
-                ...m,
-                assignedPersonIds: m.assignedPersonIds.filter(
-                  (id) => id !== action.personId
-                ),
-              }
-            : m
-        ),
+        placedMeals: state.placedMeals.map((m) => {
+          if (m.id !== action.placedMealId) return m;
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          const { [action.personId]: _, ...restServings } = m.personServings;
+          return {
+            ...m,
+            assignedPersonIds: m.assignedPersonIds.filter(
+              (id) => id !== action.personId
+            ),
+            personServings: restServings,
+          };
+        }),
       };
     case "SET_CALENDAR_VIEW": {
       let newDate = state.currentDate;
@@ -137,6 +155,21 @@ function reducer(state: DemoState, action: DemoAction): DemoState {
         ...state,
         menuItems: state.menuItems.map((m) =>
           m.id === action.item.id ? action.item : m
+        ),
+      };
+    case "UPDATE_PLACED_MEAL_SERVINGS":
+      return {
+        ...state,
+        placedMeals: state.placedMeals.map((m) =>
+          m.id === action.placedMealId
+            ? {
+                ...m,
+                personServings: {
+                  ...m.personServings,
+                  [action.personId]: Math.max(0.5, action.servings),
+                },
+              }
+            : m
         ),
       };
     default:
@@ -213,6 +246,14 @@ export function KitchenDemo() {
   const handleUpdateMenuItem = useCallback(
     (item: MenuItem) => {
       dispatch({ type: "UPDATE_MENU_ITEM", item });
+    },
+    []
+  );
+
+  // Update servings for a person on a placed meal
+  const handleUpdateServings = useCallback(
+    (placedMealId: string, personId: string, servings: number) => {
+      dispatch({ type: "UPDATE_PLACED_MEAL_SERVINGS", placedMealId, personId, servings });
     },
     []
   );
@@ -321,6 +362,7 @@ export function KitchenDemo() {
                     dispatch({ type: "REMOVE_MEAL", placedMealId: id })
                   }
                   onTogglePerson={handleTogglePerson}
+                  onUpdateServings={handleUpdateServings}
                   onTapPlace={handleTapPlace}
                   onPickMeal={handlePickMeal}
                   onUpdateMenuItem={handleUpdateMenuItem}

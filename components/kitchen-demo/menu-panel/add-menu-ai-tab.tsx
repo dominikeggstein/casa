@@ -9,7 +9,7 @@ import { genId } from "../utils";
 
 const AI_RESULTS: Omit<MenuItem, "id">[] = [
   {
-    emoji: "\u{1F961}",
+    image: "/images/food/2_chicken_tikka_masala.png",
     name: "Teriyaki Chicken Stir-Fry",
     time: 25,
     servings: 3,
@@ -25,7 +25,7 @@ const AI_RESULTS: Omit<MenuItem, "id">[] = [
     tags: ["protein", "asian"],
   },
   {
-    emoji: "\u{1F96C}",
+    image: "/images/food/6_pasta_carbonara.png",
     name: "Spinach & Ricotta Stuffed Shells",
     time: 45,
     servings: 4,
@@ -41,7 +41,7 @@ const AI_RESULTS: Omit<MenuItem, "id">[] = [
     tags: ["vegetarian", "italian"],
   },
   {
-    emoji: "\u{1F35B}",
+    image: "/images/food/4_salmon_poke_bowl.png",
     name: "Coconut Curry Shrimp",
     time: 20,
     servings: 2,

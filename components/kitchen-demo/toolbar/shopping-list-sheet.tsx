@@ -14,6 +14,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { ShoppingCart } from "lucide-react";
 import type { MenuItem, PlacedMeal } from "../types";
 import { aggregateIngredientsSimple, formatAmount } from "../utils";
+import Image from "next/image";
 
 interface ShoppingListSheetProps {
   open: boolean;
@@ -96,7 +97,7 @@ export function ShoppingListSheet({
                     htmlFor={`meal-${placedMealId}`}
                     className="flex items-center gap-1.5 text-sm"
                   >
-                    <span>{menuItem.emoji}</span>
+                    <Image src={menuItem.image} alt={menuItem.name} width={16} height={16} className="shrink-0 rounded-sm object-cover" />
                     {menuItem.name}
                   </Label>
                 </div>

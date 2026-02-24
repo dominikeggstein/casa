@@ -3,7 +3,7 @@
 import { Flame } from "lucide-react";
 import type { MealType, MenuItem, Person, PlacedMeal } from "../types";
 import { MEAL_TYPE_ORDER } from "../data";
-import { fromDateString, isToday } from "../utils";
+import { fromDateString, isToday, getMealTotalCalories } from "../utils";
 import { MealSlot } from "./meal-slot";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,7 @@ interface DayColumnProps {
   people: Person[];
   onRemoveMeal: (id: string) => void;
   onTogglePerson: (mealId: string, personId: string) => void;
+  onUpdateServings: (placedMealId: string, personId: string, servings: number) => void;
   onTapPlace?: (date: string, mealType: MealType) => void;
   onPickMeal?: (date: string, mealType: MealType, menuItemId: string) => void;
   onUpdateMenuItem: (updated: MenuItem) => void;
@@ -26,6 +27,7 @@ export function DayColumn({
   people,
   onRemoveMeal,
   onTogglePerson,
+  onUpdateServings,
   onTapPlace,
   onPickMeal,
   onUpdateMenuItem,
@@ -38,7 +40,8 @@ export function DayColumn({
   const dayMeals = meals.filter((m) => m.date === date);
   const totalCalories = dayMeals.reduce((sum, m) => {
     const item = menuItems.find((mi) => mi.id === m.menuItemId);
-    return sum + (item?.macros.calories ?? 0);
+    if (!item) return sum;
+    return sum + getMealTotalCalories(m, item);
   }, 0);
   // Average target across all people, fallback to 2000
   const avgTarget =
@@ -77,6 +80,7 @@ export function DayColumn({
             people={people}
             onRemoveMeal={onRemoveMeal}
             onTogglePerson={onTogglePerson}
+            onUpdateServings={onUpdateServings}
             onTapPlace={onTapPlace}
             onPickMeal={onPickMeal}
             onUpdateMenuItem={onUpdateMenuItem}

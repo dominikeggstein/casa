@@ -32,7 +32,7 @@ function getMockResponse(
       "Cream": "Coconut Cream",
       "Yogurt": "Coconut Yogurt",
     };
-    let swapped: string[] = [];
+    const swapped: string[] = [];
     const newIngredients = item.ingredients.map((ing) => {
       for (const [from, to] of Object.entries(swaps)) {
         if (ing.name.toLowerCase().includes(from.toLowerCase())) {

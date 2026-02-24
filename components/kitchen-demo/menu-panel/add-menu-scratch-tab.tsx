@@ -7,24 +7,19 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { MenuItem } from "../types";
 import { genId } from "../utils";
+import Image from "next/image";
 
-const EMOJI_OPTIONS = [
-  "\u{1F354}",
-  "\u{1F355}",
-  "\u{1F35D}",
-  "\u{1F35C}",
-  "\u{1F957}",
-  "\u{1F96A}",
-  "\u{1F959}",
-  "\u{1F32E}",
-  "\u{1F35B}",
-  "\u{1F372}",
-  "\u{1F363}",
-  "\u{1F96F}",
-  "\u{1F95E}",
-  "\u{1F953}",
-  "\u{1F370}",
-  "\u{1F382}",
+const IMAGE_OPTIONS = [
+  "/images/food/1_avocado_toast.png",
+  "/images/food/2_chicken_tikka_masala.png",
+  "/images/food/3_greek_salad.png",
+  "/images/food/4_salmon_poke_bowl.png",
+  "/images/food/5_blueberry_pancakes.png",
+  "/images/food/6_pasta_carbonara.png",
+  "/images/food/7_turkey_club_wrap.png",
+  "/images/food/8_lentil_soup.png",
+  "/images/food/9_protein_energy_bites.png",
+  "/images/food/10_falafel_bowl.png",
 ];
 
 interface AddMenuScratchTabProps {
@@ -33,7 +28,7 @@ interface AddMenuScratchTabProps {
 
 export function AddMenuScratchTab({ onAdd }: AddMenuScratchTabProps) {
   const [name, setName] = useState("");
-  const [emoji, setEmoji] = useState(EMOJI_OPTIONS[0]);
+  const [image, setImage] = useState(IMAGE_OPTIONS[0]);
   const [time, setTime] = useState("20");
   const [servings, setServings] = useState("2");
   const [calories, setCalories] = useState("400");
@@ -42,7 +37,7 @@ export function AddMenuScratchTab({ onAdd }: AddMenuScratchTabProps) {
     if (!name.trim()) return;
     const item: MenuItem = {
       id: genId("menu"),
-      emoji,
+      image,
       name: name.trim(),
       time: parseInt(time) || 20,
       servings: parseInt(servings) || 2,
@@ -65,21 +60,21 @@ export function AddMenuScratchTab({ onAdd }: AddMenuScratchTabProps) {
   return (
     <div className="space-y-4">
       <div>
-        <Label className="mb-1.5 block text-xs">Emoji</Label>
+        <Label className="mb-1.5 block text-xs">Image</Label>
         <div className="flex flex-wrap gap-1.5">
-          {EMOJI_OPTIONS.map((e) => (
+          {IMAGE_OPTIONS.map((img) => (
             <button
-              key={e}
-              type="button"
-              onClick={() => setEmoji(e)}
-              className={`rounded-md p-1.5 text-lg transition-colors ${
-                emoji === e
-                  ? "bg-orange/20 ring-1 ring-orange"
-                  : "hover:bg-muted"
-              }`}
-            >
-              {e}
-            </button>
+               key={img}
+               type="button"
+               onClick={() => setImage(img)}
+               className={`rounded-md p-1 transition-colors ${
+                 image === img
+                   ? "bg-orange/20 ring-2 ring-orange"
+                   : "hover:bg-muted"
+               }`}
+             >
+               <Image src={img} alt="Option" width={32} height={32} className="rounded-sm object-cover" />
+             </button>
           ))}
         </div>
       </div>

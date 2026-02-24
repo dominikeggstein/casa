@@ -21,7 +21,7 @@ export const PERSON_COLORS = [
 export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   {
     id: "menu-1",
-    emoji: "\u{1F953}",
+    image: "/images/food/1_avocado_toast.png",
     name: "Avocado Toast",
     time: 10,
     servings: 2,
@@ -37,7 +37,7 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   },
   {
     id: "menu-2",
-    emoji: "\u{1F357}",
+    image: "/images/food/2_chicken_tikka_masala.png",
     name: "Chicken Tikka Masala",
     time: 35,
     servings: 4,
@@ -56,7 +56,7 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   },
   {
     id: "menu-3",
-    emoji: "\u{1F957}",
+    image: "/images/food/3_greek_salad.png",
     name: "Greek Salad",
     time: 15,
     servings: 2,
@@ -73,7 +73,7 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   },
   {
     id: "menu-4",
-    emoji: "\u{1F363}",
+    image: "/images/food/4_salmon_poke_bowl.png",
     name: "Salmon Poke Bowl",
     time: 20,
     servings: 2,
@@ -91,7 +91,7 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   },
   {
     id: "menu-5",
-    emoji: "\u{1F95E}",
+    image: "/images/food/5_blueberry_pancakes.png",
     name: "Blueberry Pancakes",
     time: 20,
     servings: 3,
@@ -108,7 +108,7 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   },
   {
     id: "menu-6",
-    emoji: "\u{1F35D}",
+    image: "/images/food/6_pasta_carbonara.png",
     name: "Pasta Carbonara",
     time: 25,
     servings: 4,
@@ -124,7 +124,7 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   },
   {
     id: "menu-7",
-    emoji: "\u{1F96A}",
+    image: "/images/food/7_turkey_club_wrap.png",
     name: "Turkey Club Wrap",
     time: 10,
     servings: 1,
@@ -141,7 +141,7 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   },
   {
     id: "menu-8",
-    emoji: "\u{1F372}",
+    image: "/images/food/8_lentil_soup.png",
     name: "Lentil Soup",
     time: 40,
     servings: 6,
@@ -159,7 +159,7 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   },
   {
     id: "menu-9",
-    emoji: "\u{1F370}",
+    image: "/images/food/9_protein_energy_bites.png",
     name: "Protein Energy Bites",
     time: 15,
     servings: 12,
@@ -175,7 +175,7 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   },
   {
     id: "menu-10",
-    emoji: "\u{1F959}",
+    image: "/images/food/10_falafel_bowl.png",
     name: "Falafel Bowl",
     time: 30,
     servings: 3,
@@ -206,6 +206,7 @@ export function getInitialPlacedMeals(startDate: string): PlacedMeal[] {
       date: startDate,
       mealType: "breakfast",
       assignedPersonIds: ["person-1", "person-2"],
+      personServings: { "person-1": 1, "person-2": 1 },
     },
     {
       id: "placed-2",
@@ -213,6 +214,7 @@ export function getInitialPlacedMeals(startDate: string): PlacedMeal[] {
       date: startDate,
       mealType: "dinner",
       assignedPersonIds: ["person-1"],
+      personServings: { "person-1": 1 },
     },
     {
       id: "placed-3",
@@ -220,6 +222,7 @@ export function getInitialPlacedMeals(startDate: string): PlacedMeal[] {
       date: startDate,
       mealType: "lunch",
       assignedPersonIds: ["person-2"],
+      personServings: { "person-2": 1 },
     },
   ];
 }

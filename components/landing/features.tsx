@@ -2,6 +2,7 @@
 
 import { MousePointerClick, Sparkles, Filter, Users } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { AnimatedFeatures } from "./animated-features";
 
 const FEATURES = [
   {
@@ -47,6 +48,10 @@ export function Features() {
             Built for real households. Fast, flexible, and designed to get out of
             your way.
           </p>
+        </div>
+
+        <div className="mt-16 mb-20 w-full flex justify-center">
+          <AnimatedFeatures />
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2">

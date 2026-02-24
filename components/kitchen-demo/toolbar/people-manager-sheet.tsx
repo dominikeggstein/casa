@@ -35,7 +35,6 @@ export function PeopleManagerSheet({
   people,
   onAddPerson,
   onRemovePerson,
-  onUpdatePerson,
 }: PeopleManagerSheetProps) {
   const [newName, setNewName] = useState("");
   const [newKcal, setNewKcal] = useState("2000");

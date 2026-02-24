@@ -24,6 +24,7 @@ interface MealSlotProps {
   people: Person[];
   onRemoveMeal: (id: string) => void;
   onTogglePerson: (mealId: string, personId: string) => void;
+  onUpdateServings: (placedMealId: string, personId: string, servings: number) => void;
   onTapPlace?: (date: string, mealType: MealType) => void;
   onPickMeal?: (date: string, mealType: MealType, menuItemId: string) => void;
   onUpdateMenuItem: (updated: MenuItem) => void;
@@ -37,6 +38,7 @@ export function MealSlot({
   people,
   onRemoveMeal,
   onTogglePerson,
+  onUpdateServings,
   onTapPlace,
   onPickMeal,
   onUpdateMenuItem,
@@ -85,6 +87,7 @@ export function MealSlot({
                   people={people}
                   onRemove={onRemoveMeal}
                   onTogglePerson={onTogglePerson}
+                  onUpdateServings={onUpdateServings}
                   onUpdateMenuItem={onUpdateMenuItem}
                 />
               );

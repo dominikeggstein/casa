@@ -8,7 +8,7 @@ import type { MenuItem } from "../types";
 import { genId } from "../utils";
 
 const IMPORTED_RECIPE: Omit<MenuItem, "id"> = {
-  emoji: "\u{1F96F}",
+  image: "/images/food/4_salmon_poke_bowl.png",
   name: "Honey Garlic Salmon",
   time: 25,
   servings: 2,

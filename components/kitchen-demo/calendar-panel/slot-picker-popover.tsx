@@ -5,6 +5,7 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import type { MenuItem } from "../types";
+import Image from "next/image";
 
 interface SlotPickerPopoverProps {
   items: MenuItem[];
@@ -44,7 +45,7 @@ export function SlotPickerPopoverContent({
               onClick={() => onSelect(item.id)}
               className="flex items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors hover:bg-muted"
             >
-              <span className="text-sm leading-none">{item.emoji}</span>
+              <Image src={item.image} alt={item.name} width={16} height={16} className="shrink-0 rounded-sm object-cover" />
               <span className="min-w-0 flex-1 truncate font-medium">
                 {item.name}
               </span>
