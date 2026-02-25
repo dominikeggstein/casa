@@ -12,7 +12,7 @@ const FAQS = [
   {
     question: "What is Casa?",
     answer:
-      "Casa is a modular household management platform. Instead of one monolithic app, Casa lets you pick the modules you need — Kitchen for recipes and meal planning, Clean for cleaning schedules, Organize for home inventory — and skip the rest. It's your home, streamlined.",
+      "Casa is a modular household management platform. Instead of one monolithic app, Casa lets you pick the modules you need — Kitchen for recipes and meal planning, Clean for cleaning schedules, Organize for home inventory, Entertainment for movies and activities — and skip the rest. It's your home, streamlined.",
   },
   {
     question: "Is Casa free?",
@@ -22,7 +22,7 @@ const FAQS = [
   {
     question: "What are modules?",
     answer:
-      "Modules are self-contained feature sets within Casa. Each module focuses on one area of household management. You can use one module or all of them — they work independently but share data when it makes sense (like grocery lists from your meal plan).",
+      "Modules are self-contained feature sets within Casa. Each module focuses on one area of household management. You can use one module or all of them — they work independently but share data when it makes sense (like snack recipes suggested for movie night, or grocery lists from your meal plan).",
   },
   {
     question: "Is there a mobile app?",

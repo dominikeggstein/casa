@@ -7,7 +7,7 @@ const STEPS = [
     number: "01",
     title: "Pick your modules",
     description:
-      "Choose Kitchen, Clean, Organize — or all three. Only install what your household needs.",
+      "Choose Kitchen, Clean, Organize, Entertainment — or all four. Only install what your household needs.",
   },
   {
     number: "02",
@@ -19,7 +19,7 @@ const STEPS = [
     number: "03",
     title: "Let Casa flow",
     description:
-      "Recipes scale, tasks rotate, spaces stay organized. Your home runs itself.",
+      "Recipes scale, tasks rotate, spaces stay organized, movie nights plan themselves. Your home runs itself.",
   },
 ];
 

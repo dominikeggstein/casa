@@ -2,6 +2,7 @@ import { Nav } from "@/components/landing/nav";
 import { Hero } from "@/components/landing/hero";
 import { Demo } from "@/components/landing/demo";
 import { Features } from "@/components/landing/features";
+import { EntertainmentFeatures } from "@/components/landing/entertainment-features";
 import { Modules } from "@/components/landing/modules";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { Pricing } from "@/components/landing/pricing";
@@ -18,6 +19,7 @@ export default function LandingPage() {
         <Hero />
         <Demo />
         <Features />
+        <EntertainmentFeatures />
         <Modules />
         <HowItWorks />
         <Pricing />

@@ -12,7 +12,7 @@ export function Hero() {
               <span className="text-orange">in flow.</span>
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Casa brings your kitchen, cleaning, and home organization into one
+              Casa brings your kitchen, cleaning, entertainment, and home organization into one
               beautiful, modular platform. Pick what you need — let the rest flow.
             </p>
             <div className="relative mt-8">
@@ -56,9 +56,12 @@ export function Hero() {
                   stat="3 zones"
                   progress={90}
                 />
-                <div className="flex items-center justify-center rounded-xl border border-dashed border-muted-foreground/30 p-6">
-                  <span className="text-sm text-muted-foreground">+ Add module</span>
-                </div>
+                <DashboardCard
+                  title="Entertainment"
+                  accent="bg-chart-5"
+                  stat="Movie night Friday"
+                  progress={60}
+                />
               </div>
 
               {/* Bottom stat bar */}

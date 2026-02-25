@@ -18,6 +18,7 @@ Casa is built as a **modular system** where each area of household life is its o
 - **Casa Kitchen** — Recipes, meal planning, grocery lists
 - **Casa Clean** — Cleaning schedules, task rotation, room management
 - **Casa Organize** — Storage optimization, AI labeling, inventory tracking
+- **Casa Entertainment** — Movies, activities, weekend scheduling
 - **Casa Family** _(future)_ — Parenting duties, kid schedules
 - **Casa Budget** _(future)_ — Household expenses, subscriptions
 - **Casa Garden** _(future)_ — Plant care, seasonal tasks
@@ -256,15 +257,58 @@ The scaling engine is the heart of Casa Kitchen:
 
 ---
 
-## 7. Casa Clean — Cleaning Schedule Module
+## 7. Casa Entertainment — Movies, Activities & Scheduling Module
 
-### 7.1 Room-Based Organization
+### 7.1 Media Library
+
+- **Movie & show database** — household's shared collection of movies, TV shows, documentaries
+- **Status tracking** — watchlist, watching, watched per household member
+- **Ratings & reviews** — personal ratings (1-5 stars), short notes
+- **Tags** — genre, mood (cozy, thrilling, date night), occasion (family movie night, solo wind-down)
+- **TMDB search integration** — search and import movie/show metadata (poster, synopsis, cast, runtime) from The Movie Database
+- **AI suggestions** — "Based on what you've enjoyed, try these" — personalized per member or for the household
+
+### 7.2 Activity Library
+
+- **Activity types** — board games, restaurants, outings, day trips, sports, hobbies
+- **Metadata per activity** — estimated cost, duration, group size (min/max), location, indoor/outdoor
+- **Categories & tags** — similar flexible tagging as media (mood, occasion, season)
+- **Custom entries** — add any activity manually; AI can suggest metadata
+
+### 7.3 Entertainment Calendar
+
+- **Drag & drop scheduling** — drag from media/activity library directly onto calendar slots (same UX pattern as Casa Kitchen meal planner)
+- **Calendar views** — weekend focus (Fri/Sat/Sun), full week, month overview
+- **Recurring events** — "Movie Friday," "Board Game Sunday," etc.
+- **Member assignment** — who's joining which activity
+- **Conflict detection** — warns if members are double-booked or if an activity overlaps with meals/cleaning tasks from other modules
+- **Time slot suggestions** — AI finds open slots that work for all assigned members
+
+### 7.4 Cross-Module Integration
+
+- **→ Casa Kitchen:** Movie night triggers snack/dinner recipe suggestions; "Plan a movie night" auto-suggests popcorn recipes and easy finger food
+- **→ Casa Calendar:** Entertainment events appear in the unified household calendar alongside meals and cleaning tasks
+- **→ Casa Clean:** Post-event cleanup tasks can be auto-generated (e.g., "Clean living room after movie night")
+- **→ Casa Budget (future):** Track entertainment spending (streaming subscriptions, restaurant costs, activity fees)
+
+### 7.5 AI Features
+
+- **Smart recommendations** — based on household preferences, past ratings, mood, available time
+- **"Plan a date night"** — AI generates a complete evening: movie + dinner recipe + activity, all scheduled
+- **"Plan a family weekend"** — AI fills Saturday/Sunday with age-appropriate activities, meals, and downtime
+- **Smart slot finding** — "When can we all watch a movie this week?" — AI scans calendars and suggests times
+
+---
+
+## 8. Casa Clean — Cleaning Schedule Module
+
+### 8.1 Room-Based Organization
 
 - Household divided into rooms/zones (kitchen, bathroom, living room, bedroom, etc.)
 - Each room has its own set of cleaning tasks
 - Rooms are user-configurable (add, rename, remove)
 
-### 7.2 Task Management
+### 8.2 Task Management
 
 #### Recurring Task Templates
 
@@ -281,7 +325,7 @@ The scaling engine is the heart of Casa Kitchen:
 - **Status** — pending, done, overdue
 - **Priority** — optional, for sorting
 
-### 7.3 Auto-Rotation (Fair Distribution)
+### 8.3 Auto-Rotation (Fair Distribution)
 
 - **Automatic rotation** between household members
 - Algorithm balances based on:
@@ -291,20 +335,20 @@ The scaling engine is the heart of Casa Kitchen:
 - AI optimization: rebalances when workload becomes uneven
 - Manual override always available
 
-### 7.4 Confirmation & Tracking
+### 8.4 Confirmation & Tracking
 
 - **Check-off** when a task is completed
 - Completion logged with timestamp and person
 - Overdue tasks highlighted
 
-### 7.5 Gamification
+### 8.5 Gamification
 
 - **Streak tracking** — consecutive weeks of completing all assigned tasks
 - **Score/points system** — earn points for completed tasks, weighted by effort
 - **Household leaderboard** — friendly competition
 - Optional — can be disabled for households that prefer a no-pressure approach
 
-### 7.6 AI Features
+### 8.6 AI Features
 
 - **Cleaning schedule optimization** — AI suggests the most balanced and efficient schedule
 - Suggests task frequency based on room type and household size
@@ -312,9 +356,9 @@ The scaling engine is the heart of Casa Kitchen:
 
 ---
 
-## 8. Casa Organize — AI Storage & Labeling Module
+## 9. Casa Organize — AI Storage & Labeling Module
 
-### 8.1 Visual Space Definition
+### 9.1 Visual Space Definition
 
 #### 2D Grid/Shelf Editor
 
@@ -327,7 +371,7 @@ The scaling engine is the heart of Casa Kitchen:
 - Each space has configurable dimensions (width, height, depth) or simple size labels (small, medium, large)
 - Visual representation shows the spatial layout — users can see where things are at a glance
 
-### 8.2 AI-Powered Organization
+### 9.2 AI-Powered Organization
 
 #### Storage Suggestions
 
@@ -349,7 +393,7 @@ The scaling engine is the heart of Casa Kitchen:
 - "I bought 3 new IKEA KALLAX shelves for the basement"
 - AI creates the spaces and suggests how to organize existing items into new storage
 
-### 8.3 Label/Sticker Generator
+### 9.3 Label/Sticker Generator
 
 #### AI Label Naming
 
@@ -377,13 +421,13 @@ The scaling engine is the heart of Casa Kitchen:
 - Print-ready with crop marks
 - **Open decision:** Specific label printer models to support TBD — will evaluate based on market research and user feedback post-launch.
 
-### 8.4 Inventory Tracking
+### 9.4 Inventory Tracking
 
 - Track what's stored where — not just categories but actual items
 - Search across all storage: "Where did I put the Christmas decorations?"
 - Global search with results showing: item → container → shelf → room (breadcrumb path)
 
-### 8.5 Cross-Module Connections
+### 9.5 Cross-Module Connections
 
 - **→ Casa Kitchen:** Pantry items in Casa Organize feed into Kitchen's "what's in stock" for recipe suggestions and smart grocery lists
 - **→ Casa Clean:** Cleaning supply locations tracked, easy to find and restock
@@ -391,13 +435,13 @@ The scaling engine is the heart of Casa Kitchen:
 
 ---
 
-## 9. Casa Games — Gamified Task Assignment
+## 10. Casa Games — Gamified Task Assignment
 
-### 9.1 Concept
+### 10.1 Concept
 
 Instead of purely algorithmic task rotation, Casa offers playful ways to decide who does what. Any assignable task across modules can be resolved through a mini-game. This turns mundane chore distribution into a shared moment of fun — and a potential viral feature.
 
-### 9.2 Game Modes
+### 10.2 Game Modes
 
 #### Spin the Wheel
 
@@ -435,20 +479,20 @@ Instead of purely algorithmic task rotation, Casa offers playful ways to decide 
 - Proposals sent between members, tracked and enforced by the app
 - History of bets kept for accountability
 
-### 9.3 Integration Points
+### 10.3 Integration Points
 
 - **Casa Clean** → any cleaning task can be gamified instead of directly assigned
 - **Casa Kitchen** → "Who cooks tonight?" resolved via game
 - **Activity Feed** → game results posted: "Spin result: Lisa does the dishes!"
 - **Dashboard** → upcoming gamified tasks shown with a play icon
 
-### 9.4 Fairness System
+### 10.4 Fairness System
 
 - **History tracking** — the app tracks win/loss ratios over time
 - **Optional fairness balancing** — if someone has lost many times in a row, odds can be subtly weighted to rebalance
 - **Long-term stats** — "This month: Dominik 12 tasks, Lisa 10 tasks" — transparency prevents resentment
 
-### 9.5 Social/Viral Potential
+### 10.5 Social/Viral Potential
 
 - Shareable game results (screenshot-friendly or share link)
 - "Who does the dishes?" spin results are inherently fun to post on social media
@@ -456,9 +500,9 @@ Instead of purely algorithmic task rotation, Casa offers playful ways to decide 
 
 ---
 
-## 10. AI Architecture
+## 11. AI Architecture
 
-### 10.1 AI Provider Strategy
+### 11.1 AI Provider Strategy
 
 - **OpenRouter** as the routing layer — enables flexible model selection per task
 - Different tasks routed to different models based on cost/quality needs:
@@ -473,14 +517,14 @@ Instead of purely algorithmic task rotation, Casa offers playful ways to decide 
 | Natural language input processing  | Mid-tier                              | Intent parsing + action               |
 | OCR recipe extraction              | Vision model                          | Image understanding                   |
 
-### 10.2 Image Generation
+### 11.2 Image Generation
 
 - **Flux via Replicate/fal.ai** for recipe visuals
 - Triggered automatically on recipe creation
 - Prompt engineered for appetizing food photography style
 - User can regenerate or upload their own photo
 
-### 10.3 AI Cost Management
+### 11.3 AI Cost Management
 
 - **All AI features are premium/paid** — directly offsets API costs
 - **Rate limiting** on AI generations to prevent abuse (e.g., max N recipe generations per day/week)
@@ -491,7 +535,7 @@ Instead of purely algorithmic task rotation, Casa offers playful ways to decide 
 
 ---
 
-## 11. Data Model Overview
+## 12. Data Model Overview
 
 ### Core Entities
 
@@ -524,6 +568,14 @@ Household
 │   ├── Labels (generated name, theme, size, bilingual text, PDF export reference)
 │   └── Label Themes (curated designs)
 │
+├── Casa Entertainment
+│   ├── Media Library
+│   │   └── Items (title, type, status, rating, tags, TMDB ID, poster URL)
+│   ├── Activity Library
+│   │   └── Items (name, type, cost, duration, group size, location, tags)
+│   └── Entertainment Calendar
+│       └── Slots (date, time, media/activity reference, assigned members, recurring flag)
+│
 ├── Calendar (aggregated from all modules)
 ├── Activity Feed (log of all household actions)
 └── Settings (notification preferences, language, theme)
@@ -540,7 +592,7 @@ Household
 
 ---
 
-## 12. MVP Phasing Strategy
+## 13. MVP Phasing Strategy
 
 Given solo development, here's a suggested build order:
 
@@ -587,6 +639,7 @@ Given solo development, here's a suggested build order:
 5. Effort/time estimates
 6. Basic gamification (streaks, scores)
 7. Dashboard integration
+6. Entertainment module basics (media library, activity library, calendar integration)
 
 ### Phase 3 — Casa Organize (Weeks 13-18)
 
@@ -625,7 +678,7 @@ Given solo development, here's a suggested build order:
 
 ---
 
-## 13. Branding Reference
+## 14. Branding Reference
 
 ### Name & Domain
 
@@ -637,7 +690,7 @@ Given solo development, here's a suggested build order:
 
 All features follow the "Casa [Name]" pattern:
 
-- Casa Kitchen, Casa Clean, Casa Organize, Casa Family, Casa Budget, Casa Garden, Casa Guests, Casa Pets
+- Casa Kitchen, Casa Clean, Casa Organize, Casa Entertainment, Casa Family, Casa Budget, Casa Garden, Casa Guests, Casa Pets
 
 ### Design Direction
 
